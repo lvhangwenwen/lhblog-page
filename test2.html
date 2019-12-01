@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor demo</title>
+</head>
+<body>
+
+<div id="div1">
+    <p>欢迎使用 wangEditor 富文本编辑器</p>
+</div>
+
+<script type="text/javascript" src="./wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#div1')
+
+    // 配置服务器端地址
+    editor.customConfig.uploadImgServer = 'http://api.lh.cn/api/upload/image'
+
+    // 进行下文提到的其他配置
+    editor.customConfig.uploadFileName = 'file'
+    // ……
+    // ……
+    // ……
+
+    editor.create()
+</script>
+
+
+</body>
+</html>

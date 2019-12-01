@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="app">
+
+        <div class="qqq">
+        </div>
+
+        {{message}}
+        {{true ? "ok" :" no" }}
+        {{number}}
+
+        <!--不能进行逻辑判断-->
+        <input type="text" v-model="articleList.uimg">
+
+
+        <img :src="articleList.uimg" style="width: auto;height: 250px;margin-top: 6px">
+
+
+        <i class="el-icon-edit"></i>
+        <i class="el-icon-share"></i>
+        <i class="el-icon-delete"></i>
+
+
+        <div >
+            <button @click="find">查找</button>
+            {{ttt}}
+        </div>
+        <br>
+        <div @click="add">增加</div>
+        {{number}}
+    </div>
+
+
+</body>
+<!-- import Vue before Element -->
+<script type="text/javascript" src="js/vuejs-2.5.16.js"></script>
+<!-- import JavaScript -->
+
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="/js/axios-0.18.0.js"></script>
+
+<script>
+    //view model
+    new Vue({
+        el:"#app",
+        data:{
+            message: "我是煞笔",
+            number: 100,
+            key:"qqq",
+            BBB:"",
+            articleList:{
+                uimg: "http://182.254.191.32/group1/M00/00/00/rBAAEF08FEWAaizQAAGn3DQ09ow878.jpg",
+                uname:"吕航",
+                articleDesc: "这是一篇测试文章",
+                articleImg: "http://182.254.191.32/group1/M00/00/00/rBAAEF08FEWAaizQAAGn3DQ09ow878.jpg"
+            },
+            ttt: ""
+        },
+        methods:{
+
+            find:function () {
+                var _this=this;
+                axios.get('http://localhost:10010/api/article/test')
+                    .then(function (response) {
+                        _this.ttt=response.data;
+
+
+                    }).catch(function (error) {
+                    console.log(error);
+                })
+            },
+            add:function () {
+               alert(JSON.stringify(this.key))
+                this.number++;
+
+            }
+        },
+        created(){
+            this.find();
+
+        }
+
+    });
+
+
+</script>
+</html>
